@@ -13,5 +13,18 @@ namespace RequirementWPFApp
     /// </summary>
     public partial class App : Application
     {
+        private static RequirementRepository.RequirementRepository _requirementRepository;
+
+        static App()
+        {
+            _requirementRepository = new RequirementRepository.RequirementRepository();
+        }
+        public static RequirementRepository.RequirementRepository RequirementRepository
+        {
+            get
+            {
+                return _requirementRepository;
+            }
+        }
     }
 }
