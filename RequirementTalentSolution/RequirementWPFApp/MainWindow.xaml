@@ -1,0 +1,18 @@
+﻿<Window x:Class="RequirementWPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RequirementWPFApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Menu x:Name="uxFileNew">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Click="uxFileNew_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="uxFileChange" Header="Modify" Click="uxFileChange_Click"/>
+            <MenuItem x:Name="uxFileDelete" Header="_Delete" Click="uxFileDelete_Click"/>
+        </Menu>
+    </Grid>
+</Window>
