@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RequirementWPFApp"
         mc:Ignorable="d"
-        Title="RequirementWindow" Height="450" Width="800">
-    <Grid x:Name="uxGrid">
+        Title="RequirementWindow"  Width="800">
+    <Grid x:Name="uxGrid" Height="475" Margin="0,0,-11,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="1*" />
@@ -19,26 +19,85 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right">Name:</TextBlock>
-        <TextBox x:Name="uxName" Grid.Column="1" Grid.Row="0"></TextBox>
+        <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right">Role:</TextBlock>
+        <TextBox x:Name="uxRole" Grid.Column="1" Grid.Row="0"></TextBox>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right">Email:</TextBlock>
-        <TextBox x:Name="uxEmail" Grid.Column="1" Grid.Row="1"></TextBox>
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right">Primary Skills:</TextBlock>
+        <TextBox x:Name="uxPrimarySkills" Grid.Column="1" Grid.Row="1"></TextBox>
 
-        <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right">Phone Number:</TextBlock>
-        <TextBox x:Name="uxPhoneNumber" Grid.Column="1" Grid.Row="2"></TextBox>
+        <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right">AdditionalSkills:</TextBlock>
+        <TextBox x:Name="uxAdditionalSkills" Grid.Column="1" Grid.Row="2"></TextBox>
 
-        <TextBlock Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right">Phone Type:</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"> Type:</TextBlock>
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
-            <RadioButton x:Name="uxHome" IsChecked="true">Home</RadioButton>
-            <RadioButton x:Name="uxMobile">Mobile</RadioButton>
+            <RadioButton x:Name="uxSW" IsChecked="true">SW</RadioButton>
+            <RadioButton x:Name="uxHW">HW</RadioButton>
         </StackPanel>
 
-        <TextBlock Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right">Notes:</TextBlock>
-        <TextBox x:Name="uxNotes" Grid.Column="1" Grid.Row="5" AcceptsReturn="True" TextWrapping="Wrap" Height="60"></TextBox>
+        <TextBlock Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right">Status</TextBlock>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+            <RadioButton x:Name="uxOpen" IsChecked="true">Open</RadioButton>
+            <RadioButton x:Name="uxClosed">Closed</RadioButton>
+        </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Right">
+        <TextBlock Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right">MandatoryRequirement:</TextBlock>
+        <TextBox x:Name="uxMandatorySkills" Grid.Column="1" Grid.Row="5" AcceptsReturn="True" TextWrapping="Wrap" Height="60"></TextBox>
+        
+        <TextBlock Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right">Location:</TextBlock>
+        <TextBox x:Name="uxLocation" Grid.Column="1" Grid.Row="6"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="7" HorizontalAlignment="Right">Customer Name:</TextBlock>
+        <TextBox x:Name="uxCustomerName" Grid.Column="1" Grid.Row="7"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="8" HorizontalAlignment="Right">CustomerEmail:</TextBlock>
+        <TextBox x:Name="uxCustomerEmail" Grid.Column="1" Grid.Row="8"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="9" HorizontalAlignment="Right">RecruiterOwner:</TextBlock>
+        <TextBox x:Name="uxRecruiterOnwer" Grid.Column="1" Grid.Row="9"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="10" HorizontalAlignment="Right">DeliveryOwner:</TextBlock>
+        <TextBox x:Name="uxDeliveryOwner" Grid.Column="1" Grid.Row="10"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="11" HorizontalAlignment="Right">SalesOwner</TextBlock>
+        <TextBox x:Name="uxSalesOwner" Grid.Column="1" Grid.Row="11"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="12" HorizontalAlignment="Right">SO No:</TextBlock>
+        <TextBox x:Name="uxSoNumber" Grid.Column="1" Grid.Row="12"></TextBox>
+        
+        <TextBlock Grid.Column="0" Grid.Row="13" HorizontalAlignment="Right">PositionQty#</TextBlock>
+        <TextBox x:Name="uxPositionQuantity" Grid.Column="1" Grid.Row="13"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="14" HorizontalAlignment="Right">Billing</TextBlock>
+        <TextBox x:Name="uxBilling" Grid.Column="1" Grid.Row="14"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="15" HorizontalAlignment="Right">FTERate</TextBlock>
+        <TextBox x:Name="uxFteRate" Grid.Column="1" Grid.Row="15"></TextBox>
+        
+        <TextBlock Grid.Column="0" Grid.Row="16" HorizontalAlignment="Right">Contractorrate#</TextBlock>
+        <TextBox x:Name="uxContractorRate" Grid.Column="1" Grid.Row="16"></TextBox>
+        
+
+
+        <TextBlock Grid.Column="0" Grid.Row="17" HorizontalAlignment="Right">Job Description:</TextBlock>
+        <TextBox x:Name="uxJd" Grid.Column="1" Grid.Row="17" AcceptsReturn="True" TextWrapping="Wrap" Height="60"></TextBox>
+        <TextBlock Grid.Column="0" Grid.Row="18" HorizontalAlignment="Right">Qualification:</TextBlock>
+        <TextBox x:Name="uxQualification" Grid.Column="1" Grid.Row="18" AcceptsReturn="True" TextWrapping="Wrap" Height="60"></TextBox>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="19" HorizontalAlignment="Right">
             <Button x:Name="uxSubmit"  MinWidth="10" HorizontalAlignment="Center" Click="uxSubmit_Click" Margin="10">Add</Button>
             <Button x:Name="uxCancel"  MinWidth="10" HorizontalAlignment="Center" Click="uxCancel_Click" Margin="10">Cancel</Button>
         </StackPanel>
