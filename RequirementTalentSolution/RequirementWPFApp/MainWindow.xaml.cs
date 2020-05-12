@@ -37,7 +37,13 @@ namespace RequirementWPFApp
 
         private void uxFileNew_Click(object sender, RoutedEventArgs e)
         {
-
+            var window = new RequirementWindow();
+            if(window.ShowDialog()== true)
+            {
+                var uiRequirementModel = window.Requirement;
+                var repositoryRequirementModel = uiRequirementModel.ToRepositoryModel();
+                App.RequirementRepository.Add(repositoryRequirementModel);
+            }
         }
     }
 }
