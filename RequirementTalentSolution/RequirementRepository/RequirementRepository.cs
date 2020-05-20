@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RequirementDB;
-using System;
+using RequirementRepository.Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace RequirementRepository
 {
@@ -14,27 +13,27 @@ namespace RequirementRepository
         {
             var requirementDbModel = new Requirement
             {
-                Id= requirementModel.RequirementId,
-                Status=requirementModel.RequirementStatus,
-                Type=requirementModel.RequirementType,
-                Role=requirementModel.RequirementRole,
-                PositionQuantity=requirementModel.RequirementPositionQuantity,
-                PrimarySkills=requirementModel.RequirementPrimarySkills,
-                AdditionalSkillSet= requirementModel.RequirementAdditionalSkillSet,
-                MandatorySkills= requirementModel.RequirementMandatorySkills,
-                Location= requirementModel.RequirementLocation,
-                CustomerName= requirementModel.RequirementCustomerName,
-                CustomerEmail= requirementModel.RequirementCustomerEmail,
-                Billing= requirementModel.RequirementBilling,
-                Fterate= requirementModel.RequirementFteRate,
-                ContractorRate= requirementModel.RequirmentContractorRate,
-                RecruiterOwner=requirementModel.RequirementRecruiterOwner,
-                DeliveryOwner= requirementModel.RequirementDeliveryOwner,
-                SalesOwner= requirementModel.RequirementSalesOwner,
-                Jd= requirementModel.RequirementJd,
-                Qualification= requirementModel.RequirementQualification,
-                Sonumber= requirementModel.RequirementSONumber,
-                RequirementCreatedDate=requirementModel.RequirementCreatedDate
+                Id= requirementModel.Id,
+                Status=requirementModel.Status,
+                Type=requirementModel.Type,
+                Role=requirementModel.Role,
+                PositionQuantity=requirementModel.PositionQuantity,
+                PrimarySkills=requirementModel.PrimarySkills,
+                AdditionalSkillSet= requirementModel.AdditionalSkillSet,
+                MandatorySkills= requirementModel.MandatorySkills,
+                Location= requirementModel.Location,
+                CustomerName= requirementModel.CustomerName,
+                CustomerEmail= requirementModel.CustomerEmail,
+                Billing= requirementModel.Billing,
+                Fterate= requirementModel.FteRate,
+                ContractorRate= requirementModel.ContractorRate,
+                RecruiterOwner=requirementModel.RecruiterOwner,
+                DeliveryOwner= requirementModel.DeliveryOwner,
+                SalesOwner= requirementModel.SalesOwner,
+                Jd= requirementModel.Jd,
+                Qualification= requirementModel.Qualification,
+                Sonumber= requirementModel.SONumber,
+                RequirementCreatedDate=requirementModel.CreatedDate
             };
             return requirementDbModel;
         }
@@ -42,33 +41,33 @@ namespace RequirementRepository
         //Add a Repository Requirement Record
         public RequirementModel Add(RequirementModel requirementModel)
         {
-            var dbRequirementModel = ToDbRequirementModel(requirementModel);
+                var dbRequirementModel = ToDbRequirementModel(requirementModel);
             DatabaseManager.Instance.Requirement.Add(dbRequirementModel);
             DatabaseManager.Instance.SaveChanges();
 
             requirementModel = new RequirementModel
             {
-                RequirementId = dbRequirementModel.Id,
-                RequirementStatus = dbRequirementModel.Status,
-                RequirementType = dbRequirementModel.Type,
-                RequirementRole = dbRequirementModel.Role,
-                RequirementPositionQuantity = dbRequirementModel.PositionQuantity,
-                RequirementPrimarySkills = dbRequirementModel.PrimarySkills,
-                RequirementAdditionalSkillSet = dbRequirementModel.AdditionalSkillSet,
-                RequirementMandatorySkills = dbRequirementModel.MandatorySkills,
-                RequirementLocation = dbRequirementModel.Location,
-                RequirementCustomerName = dbRequirementModel.CustomerName,
-                RequirementCustomerEmail = dbRequirementModel.CustomerEmail,
-                RequirementBilling = dbRequirementModel.Billing,
-                RequirementFteRate = dbRequirementModel.Fterate,
-                RequirmentContractorRate = dbRequirementModel.ContractorRate,
-                RequirementRecruiterOwner = dbRequirementModel.RecruiterOwner,
-                RequirementDeliveryOwner = dbRequirementModel.DeliveryOwner,
-                RequirementSalesOwner = dbRequirementModel.SalesOwner,
-                RequirementJd = dbRequirementModel.Jd,
-                RequirementQualification = dbRequirementModel.Qualification,
-                RequirementSONumber = dbRequirementModel.Sonumber,
-                RequirementCreatedDate = dbRequirementModel.RequirementCreatedDate
+                Id = dbRequirementModel.Id,
+                Status = dbRequirementModel.Status,
+                Type = dbRequirementModel.Type,
+                Role = dbRequirementModel.Role,
+                PositionQuantity = dbRequirementModel.PositionQuantity,
+                PrimarySkills = dbRequirementModel.PrimarySkills,
+                AdditionalSkillSet = dbRequirementModel.AdditionalSkillSet,
+                MandatorySkills = dbRequirementModel.MandatorySkills,
+                Location = dbRequirementModel.Location,
+                CustomerName = dbRequirementModel.CustomerName,
+                CustomerEmail = dbRequirementModel.CustomerEmail,
+                Billing = dbRequirementModel.Billing,
+                FteRate = dbRequirementModel.Fterate,
+                ContractorRate = dbRequirementModel.ContractorRate,
+                RecruiterOwner = dbRequirementModel.RecruiterOwner,
+                DeliveryOwner = dbRequirementModel.DeliveryOwner,
+                SalesOwner = dbRequirementModel.SalesOwner,
+                Jd = dbRequirementModel.Jd,
+                Qualification = dbRequirementModel.Qualification,
+                SONumber = dbRequirementModel.Sonumber,
+                CreatedDate = dbRequirementModel.RequirementCreatedDate
             };
             return requirementModel;
         }
@@ -79,27 +78,27 @@ namespace RequirementRepository
             var dbRequirementModelList = DatabaseManager.Instance.Requirement
                 .Select(dbRequirementModel => new RequirementModel
                 {
-                    RequirementId = dbRequirementModel.Id,
-                    RequirementStatus = dbRequirementModel.Status,
-                    RequirementType = dbRequirementModel.Type,
-                    RequirementRole = dbRequirementModel.Role,
-                    RequirementPositionQuantity = dbRequirementModel.PositionQuantity,
-                    RequirementPrimarySkills = dbRequirementModel.PrimarySkills,
-                    RequirementAdditionalSkillSet = dbRequirementModel.AdditionalSkillSet,
-                    RequirementMandatorySkills = dbRequirementModel.MandatorySkills,
-                    RequirementLocation = dbRequirementModel.Location,
-                    RequirementCustomerName = dbRequirementModel.CustomerName,
-                    RequirementCustomerEmail = dbRequirementModel.CustomerEmail,
-                    RequirementBilling = dbRequirementModel.Billing,
-                    RequirementFteRate = dbRequirementModel.Fterate,
-                    RequirmentContractorRate = dbRequirementModel.ContractorRate,
-                    RequirementRecruiterOwner = dbRequirementModel.RecruiterOwner,
-                    RequirementDeliveryOwner = dbRequirementModel.DeliveryOwner,
-                    RequirementSalesOwner = dbRequirementModel.SalesOwner,
-                    RequirementJd = dbRequirementModel.Jd,
-                    RequirementQualification = dbRequirementModel.Qualification,
-                    RequirementSONumber = dbRequirementModel.Sonumber,
-                    RequirementCreatedDate = dbRequirementModel.RequirementCreatedDate
+                    Id = dbRequirementModel.Id,
+                    Status = dbRequirementModel.Status,
+                    Type = dbRequirementModel.Type,
+                    Role = dbRequirementModel.Role,
+                    PositionQuantity = dbRequirementModel.PositionQuantity,
+                    PrimarySkills = dbRequirementModel.PrimarySkills,
+                    AdditionalSkillSet = dbRequirementModel.AdditionalSkillSet,
+                    MandatorySkills = dbRequirementModel.MandatorySkills,
+                    Location = dbRequirementModel.Location,
+                    CustomerName = dbRequirementModel.CustomerName,
+                    CustomerEmail = dbRequirementModel.CustomerEmail,
+                    Billing = dbRequirementModel.Billing,
+                    FteRate = dbRequirementModel.Fterate,
+                    ContractorRate = dbRequirementModel.ContractorRate,
+                    RecruiterOwner = dbRequirementModel.RecruiterOwner,
+                    DeliveryOwner = dbRequirementModel.DeliveryOwner,
+                    SalesOwner = dbRequirementModel.SalesOwner,
+                    Jd = dbRequirementModel.Jd,
+                    Qualification = dbRequirementModel.Qualification,
+                    SONumber = dbRequirementModel.Sonumber,
+                    CreatedDate = dbRequirementModel.RequirementCreatedDate
                 }).ToList();
             return dbRequirementModelList;
         }
@@ -108,7 +107,7 @@ namespace RequirementRepository
         public bool Update(RequirementModel requirementModel)
         {
             var dbRequirementModel = ToDbRequirementModel(requirementModel);
-            var itemToUpdate = DatabaseManager.Instance.Requirement.Find(requirementModel.RequirementId);
+            var itemToUpdate = DatabaseManager.Instance.Requirement.Find(requirementModel.Id);
             if(itemToUpdate!= null)
             {
                 DatabaseManager.Instance.Entry(dbRequirementModel).CurrentValues.SetValues(dbRequirementModel);

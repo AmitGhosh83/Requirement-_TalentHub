@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RequirementWPFApp"
         mc:Ignorable="d"
-        Title="RequirementWindow" FontSize="12" Width="760" Height="Auto" SizeToContent="Height">
+        Title="RequirementWindow" FontSize="12" Width="760" Height="Auto" SizeToContent="Height" 
+            FocusManager.FocusedElement="{Binding ElementName=uxRole}" Loaded="Window_Loaded">
     <Grid x:Name="uxGrid" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -18,7 +19,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
@@ -33,23 +34,20 @@
         </StackPanel>
 
         <!-- Details -->
-        <TextBlock Grid.Row="1" Grid.Column="0" 
-                   HorizontalAlignment="Center" 
-                   Margin="5,5"
-                   FontWeight="Bold"> Details
-        </TextBlock>
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Background="#EEEEEE">
-            <StackPanel Margin="5 5">
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="5,5" FontWeight="Bold"> Details</TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Background="#EEEEEE" >
+            <StackPanel Margin="5 5" >
                 <TextBlock HorizontalAlignment="Center" >Role:</TextBlock>
-                <TextBox x:Name="uxRole" Width="100"></TextBox>
+                <TextBox x:Name="uxRole" Width="100" Text="{Binding Path= Role, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+                <Label x:Name="uxRoleError" Content="{Binding Path=RoleError, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
             </StackPanel >
             <StackPanel Margin="5,5">
                 <TextBlock HorizontalAlignment="Center">Location:</TextBlock>
-                <TextBox x:Name="uxLocation" Width="100" ></TextBox>
+                <TextBox x:Name="uxLocation" Text="{Binding Location}"  Width="100" ></TextBox>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">#Positions</TextBlock>
-                <TextBox x:Name="uxPositionQuantity" Width="100" ></TextBox>
+                <TextBox x:Name="uxPositionQuantity" Text="{Binding PositionQuantity}" Width="100" ></TextBox>
             </StackPanel>
         </StackPanel>
 
@@ -62,11 +60,11 @@
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" >
             <StackPanel Margin="5 5">
                 <TextBlock HorizontalAlignment="Center" >Primary Skills:</TextBlock>
-                <TextBox x:Name="uxPrimarySkills"  Width="200"></TextBox>
+                <TextBox x:Name="uxPrimarySkills" Text="{Binding PrimarySkills}" Width="200"></TextBox>
             </StackPanel >
             <StackPanel Margin="5,5">
                 <TextBlock HorizontalAlignment="Center">AdditionalSkills:</TextBlock>
-                <TextBox x:Name="uxAdditionalSkills" Width="300" ></TextBox>
+                <TextBox x:Name="uxAdditionalSkills" Text="{Binding AdditionalSkillSet}" Width="300" ></TextBox>
             </StackPanel>
 
         </StackPanel>
@@ -79,24 +77,24 @@
         </TextBlock>
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Background="#EEEEEE">
             <StackPanel Margin="5 5">
-                <TextBlock HorizontalAlignment="Center">CustomerName</TextBlock>
-                <TextBox  x:Name="uxCustomerName" Width="150"></TextBox>
+                <TextBlock HorizontalAlignment="Center">Customer Name</TextBlock>
+                <TextBox  x:Name="uxCustomerName" Text="{Binding CustomerName}" Width="150"></TextBox>
             </StackPanel >
             <StackPanel Margin="5,5">
-                <TextBlock HorizontalAlignment="Center">CustomerEmail</TextBlock>
-                <TextBox x:Name="uxCustomerEmail" Width="150" ></TextBox>
+                <TextBlock HorizontalAlignment="Center">Customer Email</TextBlock>
+                <TextBox x:Name="uxCustomerEmail" Text="{Binding CustomerEmail}" Width="150" ></TextBox>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">Recruiter</TextBlock>
-                <TextBox x:Name="uxRecruiterOnwer" Width="100" ></TextBox>
+                <TextBox x:Name="uxRecruiterOnwer" Text="{Binding RecruiterOwner}" Width="100" ></TextBox>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">DeliveryPOC</TextBlock>
-                <TextBox x:Name="uxDeliveryOwner" Width="100" ></TextBox>
+                <TextBox x:Name="uxDeliveryOwner" Text="{Binding DeliveryOwner}"  Width="100" ></TextBox>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">SalesPOC</TextBlock>
-                <TextBox x:Name="uxSalesOwner" Width="100"  ></TextBox>
+                <TextBox x:Name="uxSalesOwner" Text="{Binding SalesOwner}"  Width="100"  ></TextBox>
             </StackPanel>
         </StackPanel>
 
@@ -104,24 +102,27 @@
         <TextBlock Grid.Row="4" Grid.Column="0" 
                    HorizontalAlignment="Center" 
                    Margin="5,5"
-                   FontWeight="Bold"> Billing
+                   FontWeight="Bold"> Billing($/hr)
         </TextBlock>
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" >
             <StackPanel Margin="5 5">
-                <TextBlock HorizontalAlignment="Center">Client Rate ($/hr)</TextBlock>
-                <TextBox x:Name="uxBilling" Width="100"></TextBox>
+                <TextBlock HorizontalAlignment="Center">Client Rate</TextBlock>
+                <Label x:Name="uxBilling" Content="{Binding ElementName=uxBillingSlider, Path=Value}" Width="100"></Label>
+                <Slider x:Name="uxBillingSlider" Value="{Binding Billing}" IsSnapToTickEnabled="True" Minimum="15" Maximum="150" />
             </StackPanel >
             <StackPanel Margin="5,5">
                 <TextBlock HorizontalAlignment="Center">FTE Rate</TextBlock>
-                <TextBox x:Name="uxFteRate" Width="100" ></TextBox>
+                <Label x:Name="uxFteRate" Content="{Binding ElementName=uxFTERateSlider, Path=Value}" Width="100" ></Label>
+                <Slider x:Name="uxFTERateSlider" Value="{Binding Fterate}" IsSnapToTickEnabled="True" Minimum="15" Maximum="105" />
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">Contractor Rate</TextBlock>
-                <TextBox x:Name="uxContractorRate"  Width="100" ></TextBox>
+                <Label x:Name="uxContractorRate" Content="{Binding ElementName=uxContractorRateSlider, Path=Value}" Width="100" ></Label>
+                <Slider x:Name="uxContractorRateSlider" Value="{Binding ContractorRate}" IsSnapToTickEnabled="True" Minimum="15" Maximum="105" />
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">SO#</TextBlock>
-                <TextBox x:Name="uxSoNumber" Width="100" ></TextBox>
+                <TextBox x:Name="uxSoNumber" Text="{Binding Sonumber}" Width="100" ></TextBox>
             </StackPanel>
         </StackPanel>
 
@@ -129,20 +130,20 @@
         <TextBlock Grid.Row="6" Grid.Column="0" 
                    HorizontalAlignment="Center" 
                    Margin="5,65"
-                   FontWeight="Bold"> Additional Details
+                   FontWeight="Bold"> Addn. Details
         </TextBlock>
         <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Background="#EEEEEE">
             <StackPanel Margin="5 5">
                 <TextBlock HorizontalAlignment="Center">JD</TextBlock>
-                <TextBox  x:Name="uxJd" Width="150" AcceptsReturn="True" TextWrapping="Wrap" Height="150"></TextBox>
+                <TextBox  x:Name="uxJd" Text="{Binding Jd}" Width="150" AcceptsReturn="True" TextWrapping="Wrap" Height="150"></TextBox>
             </StackPanel >
             <StackPanel Margin="20,5">
                 <TextBlock HorizontalAlignment="Center">Qualification</TextBlock>
-                <TextBox x:Name="uxQualification" Width="150" AcceptsReturn="True" TextWrapping="Wrap" Height="150"></TextBox>
+                <TextBox x:Name="uxQualification" Text="{Binding Qualification}" Width="150" AcceptsReturn="True" TextWrapping="Wrap" Height="150"></TextBox>
             </StackPanel>
             <StackPanel Margin="20,5">
                 <TextBlock  HorizontalAlignment="Center">Mandatory Requirement</TextBlock>
-                <TextBox x:Name="uxMandatorySkills"  Width="150" AcceptsReturn="True" TextWrapping="Wrap" Height="150" ></TextBox>
+                <TextBox x:Name="uxMandatorySkills" Text="{Binding MandatorySkills}" Width="150" AcceptsReturn="True" TextWrapping="Wrap" Height="150" ></TextBox>
             </StackPanel>
         </StackPanel>
 

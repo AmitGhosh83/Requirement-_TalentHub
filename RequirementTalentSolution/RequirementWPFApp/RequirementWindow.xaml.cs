@@ -1,15 +1,6 @@
 ﻿using RequirementWPFApp.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace RequirementWPFApp
 {
@@ -18,39 +9,66 @@ namespace RequirementWPFApp
     /// </summary>
     public partial class RequirementWindow : Window
     {
+
         public RequirementWindow()
         {
             InitializeComponent();
             ShowInTaskbar = false;
+            //uxGrid.DataContext = this;
         }
-        public UIRequirementModel Requirement { get; set; }
-        private void uxSubmit_Click(object sender, RoutedEventArgs e)
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Requirement = new UIRequirementModel();
-            Requirement.Role = uxRole.Text;
-            Requirement.Location = uxLocation.Text;
-            Requirement.PositionQuantity = ConvertStringInputToInt( uxPositionQuantity.Text);
-            Requirement.PrimarySkills = uxPrimarySkills.Text;
-            Requirement.AdditionalSkillSet = uxAdditionalSkills.Text;
-            Requirement.CustomerName = uxCustomerName.Text;
-            Requirement.CustomerEmail = uxCustomerEmail.Text;
-            Requirement.RecruiterOwner = uxRecruiterOnwer.Text;
-            Requirement.DeliveryOwner = uxDeliveryOwner.Text;
-            Requirement.SalesOwner = uxSalesOwner.Text;
-            Requirement.Billing = ConvertStringInputToDecimal(uxBilling.Text);
-            Requirement.Fterate = ConvertStringInputToDecimal(uxFteRate.Text);
-            Requirement.ContractorRate = ConvertStringInputToDecimal(uxContractorRate.Text);
-            Requirement.Sonumber = uxSoNumber.Text;
-            Requirement.Jd = uxJd.Text;
-            Requirement.Qualification = uxQualification.Text;
-            Requirement.MandatorySkills = uxMandatorySkills.Text;
-            if(uxHW.IsChecked.Value)
+            if(Requirement!= null)
             {
-                Requirement.Type = "HW";
+                if(Requirement.Type=="SW")
+                {
+                    uxSW.IsChecked = true;
+                }
+                else
+                {
+                    uxHW.IsChecked = true;
+                }
+                if(Requirement.Status=="Open")
+                {
+                    uxOpen.IsChecked = true;
+                }
+                else
+                {
+                    uxClosed.IsChecked = true;
+                }
+
+                uxSubmit.Content = "Modify";
             }
             else
             {
+                Requirement = new UIRequirementModel();
+            }
+            
+            uxGrid.DataContext = Requirement;
+        }
+
+        public UIRequirementModel Requirement
+        {
+            get { return (UIRequirementModel)GetValue(RequirementProperty); }
+            set { SetValue(RequirementProperty, value); }
+        }
+
+        public static readonly DependencyProperty RequirementProperty =
+            DependencyProperty.Register("Requirement", typeof(UIRequirementModel), typeof(RequirementWindow), new PropertyMetadata(null));
+
+
+
+        private void uxSubmit_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (uxSW.IsChecked.Value)
+            {
                 Requirement.Type = "SW";
+            }
+            else
+            {
+                Requirement.Type = "HW";
             }
 
             if (uxOpen.IsChecked.Value)
@@ -74,9 +92,9 @@ namespace RequirementWPFApp
             {
                 int.TryParse(input, out output);
             }
-            catch( Exception ex)
+            catch (Exception ex)
             {
-                throw new FormatException( ex.Message+ "The input is not in int format");
+                throw new FormatException(ex.Message + "The input is not in int format");
             }
             return output;
         }
@@ -86,7 +104,7 @@ namespace RequirementWPFApp
             decimal output;
             try
             {
-               decimal.TryParse(input, out output);
+                decimal.TryParse(input, out output);
             }
             catch (Exception ex)
             {
@@ -99,5 +117,7 @@ namespace RequirementWPFApp
             DialogResult = false;
             Close();
         }
+
+
     }
 }
