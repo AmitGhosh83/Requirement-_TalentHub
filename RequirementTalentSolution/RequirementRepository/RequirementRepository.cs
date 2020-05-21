@@ -106,11 +106,11 @@ namespace RequirementRepository
         //Update a Repository Requirment
         public bool Update(RequirementModel requirementModel)
         {
-            var dbRequirementModel = ToDbRequirementModel(requirementModel);
-            var itemToUpdate = DatabaseManager.Instance.Requirement.Find(requirementModel.Id);
-            if(itemToUpdate!= null)
+            var original = DatabaseManager.Instance.Requirement.Find(requirementModel.Id);
+
+            if(original != null)
             {
-                DatabaseManager.Instance.Entry(dbRequirementModel).CurrentValues.SetValues(dbRequirementModel);
+                DatabaseManager.Instance.Entry(original).CurrentValues.SetValues(ToDbRequirementModel(requirementModel));
                 DatabaseManager.Instance.SaveChanges();
                 return true;
             }

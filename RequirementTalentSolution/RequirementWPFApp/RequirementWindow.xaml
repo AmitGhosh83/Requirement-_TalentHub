@@ -43,11 +43,13 @@
             </StackPanel >
             <StackPanel Margin="5,5">
                 <TextBlock HorizontalAlignment="Center">Location:</TextBlock>
-                <TextBox x:Name="uxLocation" Text="{Binding Location}"  Width="100" ></TextBox>
+                <TextBox x:Name="uxLocation" Text="{Binding Location, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  Width="100" ></TextBox>
+                <Label x:Name="uxLocationError" Content="{Binding Path=LocationError, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">#Positions</TextBlock>
                 <TextBox x:Name="uxPositionQuantity" Text="{Binding PositionQuantity}" Width="100" ></TextBox>
+                
             </StackPanel>
         </StackPanel>
 
@@ -60,7 +62,8 @@
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" >
             <StackPanel Margin="5 5">
                 <TextBlock HorizontalAlignment="Center" >Primary Skills:</TextBlock>
-                <TextBox x:Name="uxPrimarySkills" Text="{Binding PrimarySkills}" Width="200"></TextBox>
+                <TextBox x:Name="uxPrimarySkills" Text="{Binding PrimarySkills, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200"></TextBox>
+                <Label x:Name="uxPrimarySkillsError" Content="{Binding Path=PrimarySkillsError, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
             </StackPanel >
             <StackPanel Margin="5,5">
                 <TextBlock HorizontalAlignment="Center">AdditionalSkills:</TextBlock>
@@ -78,23 +81,28 @@
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Background="#EEEEEE">
             <StackPanel Margin="5 5">
                 <TextBlock HorizontalAlignment="Center">Customer Name</TextBlock>
-                <TextBox  x:Name="uxCustomerName" Text="{Binding CustomerName}" Width="150"></TextBox>
+                <TextBox  x:Name="uxCustomerName" Text="{Binding CustomerName,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="150"></TextBox>
+                <Label x:Name="uxCustomerNameError" Content="{Binding Path=CustomerNameError, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
             </StackPanel >
             <StackPanel Margin="5,5">
                 <TextBlock HorizontalAlignment="Center">Customer Email</TextBlock>
-                <TextBox x:Name="uxCustomerEmail" Text="{Binding CustomerEmail}" Width="150" ></TextBox>
+                <TextBox x:Name="uxCustomerEmail" Text="{Binding CustomerEmail, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="150" ></TextBox>
+                <Label x:Name="uxCustomerEmailError" Content="{Binding Path=CustomerEmailError, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">Recruiter</TextBlock>
-                <TextBox x:Name="uxRecruiterOnwer" Text="{Binding RecruiterOwner}" Width="100" ></TextBox>
+                <TextBox x:Name="uxRecruiterOnwer" Text="{Binding RecruiterOwner, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="100"></TextBox>
+                <Label x:Name="uxRecruiterOwner" Content="{Binding Path=RecruiterOwner, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">DeliveryPOC</TextBlock>
-                <TextBox x:Name="uxDeliveryOwner" Text="{Binding DeliveryOwner}"  Width="100" ></TextBox>
+                <TextBox x:Name="uxDeliveryOwner" Text="{Binding DeliveryOwner, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  Width="100"></TextBox>
+                <Label x:Name="uxDeliveryOwnerError" Content="{Binding Path=DeliveryOwnerError, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">SalesPOC</TextBlock>
-                <TextBox x:Name="uxSalesOwner" Text="{Binding SalesOwner}"  Width="100"  ></TextBox>
+                <TextBox x:Name="uxSalesOwner" Text="{Binding SalesOwner}"  Width="100"></TextBox>
+                <Label x:Name="uxSalesOwnerError" Content="{Binding Path=SalesOwnerError, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
             </StackPanel>
         </StackPanel>
 

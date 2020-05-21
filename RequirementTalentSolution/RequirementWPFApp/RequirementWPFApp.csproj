@@ -8,6 +8,15 @@
 
   <ItemGroup>
     <None Remove="Images\add.png" />
+    <None Remove="Images\add_1.png" />
+    <None Remove="Images\Add_Button.png" />
+    <None Remove="Images\add_mainPage.png" />
+    <None Remove="Images\Cancel_Button.png" />
+    <None Remove="Images\Delete.png" />
+    <None Remove="Images\Edit.png" />
+    <None Remove="Images\Edit_2.png" />
+    <None Remove="Images\repository.png" />
+    <None Remove="Images\Startup.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +33,15 @@
 
   <ItemGroup>
     <Resource Include="Images\add.png" />
+    <Resource Include="Images\add_1.png" />
+    <Resource Include="Images\Add_Button.png" />
+    <Resource Include="Images\add_mainPage.png" />
+    <Resource Include="Images\Cancel_Button.png" />
+    <Resource Include="Images\Delete.png" />
+    <Resource Include="Images\Edit.png" />
+    <Resource Include="Images\Edit_2.png" />
+    <Resource Include="Images\repository.png" />
+    <Resource Include="Images\Startup.png" />
   </ItemGroup>
 
 </Project>

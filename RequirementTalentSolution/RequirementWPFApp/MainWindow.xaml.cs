@@ -120,7 +120,8 @@ namespace RequirementWPFApp
             if(window.ShowDialog()== true)
             {
                 var uiRequirement = window.Requirement;
-                App.RequirementRepository.Update(window.Requirement.ToRepositoryModel());
+                var repositoryRequirementModel = uiRequirement.ToRepositoryModel();
+                App.RequirementRepository.Update(repositoryRequirementModel);
                
             }
         }

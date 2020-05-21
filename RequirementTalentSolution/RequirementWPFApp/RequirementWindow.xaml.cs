@@ -14,7 +14,7 @@ namespace RequirementWPFApp
         {
             InitializeComponent();
             ShowInTaskbar = false;
-            //uxGrid.DataContext = this;
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -59,6 +59,7 @@ namespace RequirementWPFApp
 
 
 
+        //Add Handler
         private void uxSubmit_Click(object sender, RoutedEventArgs e)
         {
 

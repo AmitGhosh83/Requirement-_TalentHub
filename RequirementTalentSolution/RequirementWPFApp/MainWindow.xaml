@@ -12,21 +12,31 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="uxDataGrid" Grid.Row="1" Grid.Column="1" 
+        <StackPanel Grid.ColumnSpan="2" Background="Teal" Orientation="Horizontal">
+            <Image Source="Images/Startup.png" Height="90" Margin="5"/>
+            <TextBlock Text="Requirement Repository App" 
+                 FontSize="30" FontWeight="Bold" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                 Margin="60 10 10 30"/>
+            <TextBlock Text="Version 1.0" Foreground="#333333" VerticalAlignment="Bottom" Margin="0 0 0 15"/>
+        </StackPanel>
+        <DataGrid x:Name="uxDataGrid" Grid.Row="1" Grid.Column="1" Margin="0 20"
                   ItemsSource="{Binding Requirements}"
                   AutoGenerateColumns="False"
                   SelectionChanged="uxDataGrid_SelectionChanged"
                   CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTemplateColumn x:Name="updateButtonColumn" Width="Auto">
+                <DataGridTemplateColumn x:Name="updateButtonColumn" Width="Auto" Header="Update">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.UpdateRequirementCommand}"
-                                    CommandParameter="{Binding}"
-                                    Content="Update"/>
+                                    CommandParameter="{Binding}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Images/Edit_2.png" Height="30" Margin="5"></Image>
+                                </StackPanel>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -40,15 +50,18 @@
                 <DataGridTextColumn x:Name="FTERateColumn" Width="Auto" Header="FTE Rate" Binding="{Binding Fterate}"/>
                 <DataGridTextColumn x:Name="ContractorRateColumn" Width="Auto" Header="SubCon Rate" Binding="{Binding ContractorRate}"/>
                 <DataGridTextColumn x:Name="TypeColumn" Width="Auto" Header="Type" Binding="{Binding Type}"/>
-                <DataGridTextColumn x:Name="StatusColumn" Width="Auto" Header="SubCon Rate" Binding="{Binding Status}"/>
+                <DataGridTextColumn x:Name="StatusColumn" Width="Auto" Header="Status" Binding="{Binding Status}"/>
                 <DataGridTextColumn x:Name="QuantityColumn" Width="Auto" Header="#Positions" Binding="{Binding PositionQuantity}"/>
 
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.DeleteRequirementCommand}"
-                              CommandParameter="{Binding}"
-                              Content="Delete"/>
+                              CommandParameter="{Binding}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Images/Delete.png" Height="30" Margin="5"></Image>
+                                </StackPanel>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -56,9 +69,17 @@
             
         </DataGrid>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="uxAdd" Width="75" Height="50" Click="uxAdd_Click" >Add</Button>
+            <Button x:Name="uxAdd" Width="75" Height="50" Click="uxAdd_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/add_1.png" Height="30" Margin="5"></Image>
+                </StackPanel>
+            </Button>
             <Button x:Name="uxDelete" Width="75" Height="50" Margin="10 0 0 0"
-                    Command="{Binding DeleteSelectedCommand}" CommandParameter="{Binding ElementName=uxDataGrid, Path=SelectedItem}" Content="Delete"/>
+                    Command="{Binding DeleteSelectedCommand}" CommandParameter="{Binding ElementName=uxDataGrid, Path=SelectedItem}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/Delete.png" Height="30" Margin="5"></Image>
+                </StackPanel>
+            </Button>
         </StackPanel>           
     </Grid>
 </Window>
