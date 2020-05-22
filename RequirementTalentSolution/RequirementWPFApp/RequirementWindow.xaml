@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RequirementWPFApp"
         mc:Ignorable="d"
-        Title="RequirementWindow" FontSize="12" Width="760" Height="Auto" SizeToContent="Height" 
+        Title="RequirementWindow" FontSize="12" Width="1000" Height="Auto" SizeToContent="Height" Background="Lightgray" Opacity="1" 
             FocusManager.FocusedElement="{Binding ElementName=uxRole}" Loaded="Window_Loaded">
     <Grid x:Name="uxGrid" >
         <Grid.ColumnDefinitions>
@@ -25,12 +25,12 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <StackPanel Grid.ColumnSpan="2" Background="Teal" Orientation="Horizontal">
-            <Image Source="Images/add.png" Height="45" Margin="5"/>
+        <StackPanel Grid.ColumnSpan="2" Background="Teal" Orientation="Horizontal" >
+            <Image Source="Images/profile.png" Height="100" Margin="5" Opacity="0.9"/>
             <TextBlock Text="Add Requirement" 
                  FontSize="30" FontWeight="Bold" Foreground="White" VerticalAlignment="Bottom"
-                 Margin="60 10 10 10"/>
-            <TextBlock Text="Version 1.0" Foreground="#333333" VerticalAlignment="Bottom" Margin="0 0 0 15"/>
+                 Margin="210 10 10 40"/>
+            <TextBlock Text="Version 1.0" Foreground="#333333" VerticalAlignment="Bottom" Margin="0 0 0 40"/>
         </StackPanel>
 
         <!-- Details -->
@@ -92,7 +92,7 @@
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">Recruiter</TextBlock>
                 <TextBox x:Name="uxRecruiterOnwer" Text="{Binding RecruiterOwner, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="100"></TextBox>
-                <Label x:Name="uxRecruiterOwner" Content="{Binding Path=RecruiterOwner, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
+                <Label x:Name="uxRecruiterOwner" Content="{Binding Path=RecruiterErrorOwner, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"></Label>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">DeliveryPOC</TextBlock>
@@ -115,18 +115,18 @@
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" >
             <StackPanel Margin="5 5">
                 <TextBlock HorizontalAlignment="Center">Client Rate</TextBlock>
-                <Label x:Name="uxBilling" Content="{Binding ElementName=uxBillingSlider, Path=Value}" Width="100"></Label>
-                <Slider x:Name="uxBillingSlider" Value="{Binding Billing}" IsSnapToTickEnabled="True" Minimum="15" Maximum="150" />
+                <Label x:Name="uxBilling" Content="{Binding ElementName=uxBillingSlider, Path=Value}" Width="100" FontWeight="Bold"></Label>
+                <Slider x:Name="uxBillingSlider" Value="{Binding Billing}" IsSnapToTickEnabled="True" Minimum="15" Maximum="150" Width="200" />
             </StackPanel >
             <StackPanel Margin="5,5">
                 <TextBlock HorizontalAlignment="Center">FTE Rate</TextBlock>
-                <Label x:Name="uxFteRate" Content="{Binding ElementName=uxFTERateSlider, Path=Value}" Width="100" ></Label>
-                <Slider x:Name="uxFTERateSlider" Value="{Binding Fterate}" IsSnapToTickEnabled="True" Minimum="15" Maximum="105" />
+                <Label x:Name="uxFteRate" Content="{Binding ElementName=uxFTERateSlider, Path=Value}" Width="100" FontWeight="Bold"></Label>
+                <Slider x:Name="uxFTERateSlider" Value="{Binding Fterate}" IsSnapToTickEnabled="True" Minimum="15" Maximum="105" Width="200" />
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">Contractor Rate</TextBlock>
-                <Label x:Name="uxContractorRate" Content="{Binding ElementName=uxContractorRateSlider, Path=Value}" Width="100" ></Label>
-                <Slider x:Name="uxContractorRateSlider" Value="{Binding ContractorRate}" IsSnapToTickEnabled="True" Minimum="15" Maximum="105" />
+                <Label x:Name="uxContractorRate" Content="{Binding ElementName=uxContractorRateSlider, Path=Value}" Width="100" FontWeight="Bold"></Label>
+                <Slider x:Name="uxContractorRateSlider" Value="{Binding ContractorRate}" IsSnapToTickEnabled="True" Minimum="15" Maximum="105" Width="200"/>
             </StackPanel>
             <StackPanel Margin="5,5">
                 <TextBlock  HorizontalAlignment="Center">SO#</TextBlock>
@@ -143,15 +143,15 @@
         <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Background="#EEEEEE">
             <StackPanel Margin="5 5">
                 <TextBlock HorizontalAlignment="Center">JD</TextBlock>
-                <TextBox  x:Name="uxJd" Text="{Binding Jd}" Width="150" AcceptsReturn="True" TextWrapping="Wrap" Height="150"></TextBox>
+                <TextBox  x:Name="uxJd" Text="{Binding Jd}" Width="250" AcceptsReturn="True" TextWrapping="Wrap" Height="250"></TextBox>
             </StackPanel >
             <StackPanel Margin="20,5">
                 <TextBlock HorizontalAlignment="Center">Qualification</TextBlock>
-                <TextBox x:Name="uxQualification" Text="{Binding Qualification}" Width="150" AcceptsReturn="True" TextWrapping="Wrap" Height="150"></TextBox>
+                <TextBox x:Name="uxQualification" Text="{Binding Qualification}" Width="250" AcceptsReturn="True" TextWrapping="Wrap" Height="250"></TextBox>
             </StackPanel>
             <StackPanel Margin="20,5">
                 <TextBlock  HorizontalAlignment="Center">Mandatory Requirement</TextBlock>
-                <TextBox x:Name="uxMandatorySkills" Text="{Binding MandatorySkills}" Width="150" AcceptsReturn="True" TextWrapping="Wrap" Height="150" ></TextBox>
+                <TextBox x:Name="uxMandatorySkills" Text="{Binding MandatorySkills}" Width="250" AcceptsReturn="True" TextWrapping="Wrap" Height="250" ></TextBox>
             </StackPanel>
         </StackPanel>
 
@@ -177,16 +177,16 @@
 
         <!-- Buttons -->
         <StackPanel Orientation="Horizontal"  Grid.ColumnSpan="2" Grid.Row="8" HorizontalAlignment="Center">
-            <Button x:Name="uxSubmit" HorizontalAlignment="Center" Click="uxSubmit_Click" Margin="10" Foreground="Green">
+            <Button x:Name="uxSubmit" HorizontalAlignment="Center" Click="uxSubmit_Click" Margin="10" Style="{StaticResource GrayButton}" Foreground="Teal">
                 <StackPanel Orientation="Horizontal" >
-                    <Image Source="Images/Add_Button.png" Height="30" Margin="5"></Image>
+                    <Image Source="Images/add_1.png" Height="30" Margin="5"></Image>
                     <TextBlock Text="Add" Margin="0 10 5 0"/>
                 </StackPanel>
             </Button>
 
-            <Button x:Name="uxCancel" HorizontalAlignment="Center" Click="uxCancel_Click" Margin="10" Foreground="MediumVioletRed">
+            <Button x:Name="uxCancel" HorizontalAlignment="Center" Click="uxCancel_Click" Margin="10" Style="{StaticResource GrayButton}" Foreground="Teal">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="Images/Cancel_Button.png" Height="30" Margin="5"></Image>
+                    <Image Source="Images/Cancel.png" Height="30" Margin="5"></Image>
                     <TextBlock Text="Cancel" Margin="0 10 5 0"/>
                 </StackPanel>
             </Button>

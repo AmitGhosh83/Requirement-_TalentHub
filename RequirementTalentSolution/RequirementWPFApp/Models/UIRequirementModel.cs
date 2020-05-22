@@ -289,7 +289,7 @@ namespace RequirementWPFApp.Models
             get { return _recruiterOwnerError; }
             set 
             { 
-                if(_recruiterOwnerError!= value)
+                if(_recruiterOwnerError != value)
                 _recruiterOwnerError = value;
                 OnPropertyChanged(nameof(RecruiterOwnerError));
             }
@@ -456,11 +456,12 @@ namespace RequirementWPFApp.Models
                         }
 
                     case "DeliveryOwner":
+
                         {
                             DeliveryOwnerError = "";
                             if (string.IsNullOrEmpty(DeliveryOwner))
                             {
-                                DeliveryOwnerError = "Recruiter needs to be assigned";
+                                DeliveryOwnerError = "Delivery needs to be assigned";
                             }
                             return DeliveryOwnerError;
                         }
@@ -470,7 +471,7 @@ namespace RequirementWPFApp.Models
                             SalesOwnerError = "";
                             if (string.IsNullOrEmpty(SalesOwner))
                             {
-                                SalesOwnerError = "Recruiter needs to be assigned";
+                                SalesOwnerError = "Sales needs to be assigned";
                             }
                             return SalesOwner;
                         }

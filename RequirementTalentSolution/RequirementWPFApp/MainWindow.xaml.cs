@@ -22,6 +22,7 @@ namespace RequirementWPFApp
             DeleteSelectedCommand = new RelayCommand<UIRequirementModel>(OnDeleteRequirement, CanDeleteRequirement);
             UpdateRequirementCommand = new RelayCommand<UIRequirementModel>(OnUpdateRequirement);
             
+
         }
 
         //Exposed Properties by the application for Binding
@@ -126,5 +127,12 @@ namespace RequirementWPFApp
             }
         }
 
+  
+
+        //private void uxSalesComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        //{
+        //    SelectedRequirement = (UIRequirementModel)uxSalesComboBox.SelectedItem;
+        //    uxDataGrid.ItemsSource = Requirements.Where(x => x.SalesOwner == SelectedRequirement.SalesOwner);
+        //}
     }
 }
